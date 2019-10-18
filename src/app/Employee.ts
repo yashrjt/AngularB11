@@ -1,4 +1,6 @@
 export interface Employee{
     name:string,
-    age:number
+    age:number,
+    dateJoined:Date,
+    salary:number
   }

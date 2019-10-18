@@ -1,1 +1,7 @@
-<p>flights works!</p>
+<h4>FLIGHTS DATA</h4>
+<UL>
+    <ng-container *ngFor="let item of flightInput">
+        <li>{{item.flightNo |uppercase}}, {{item.passengers}}, {{item.city}}</li>
+        <button (click)="selectFlight(item)">Select Flight</button>
+    </ng-container>
+</UL>

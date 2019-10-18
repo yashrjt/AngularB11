@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlightsComponent } from './flights/flights.component';
+import { CalculateBonusPipe } from './pipes/calculate-bonus.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FlightsComponent
+    FlightsComponent,
+    CalculateBonusPipe
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit,AfterViewInit{
   //randomVar:any;
   image:string;
   name:string;
-  
+  flightsArr:Array<any>;
   constructor(){
     
   }
@@ -38,17 +38,45 @@ export class AppComponent implements OnInit,AfterViewInit{
     this.empArr=[
       {
       name:'John',
-      age:30
+      age:30,
+      dateJoined:new Date(),
+      salary:50000
       },
       {
         name:'Alex',
-        age:35
+        age:35,
+        dateJoined:new Date(),
+        salary:30000
       },
       {
         name:'Albert',
-        age:25
+        age:25,
+        dateJoined:new Date(),
+       salary:25000
       }
     ]
+
+    this.flightsArr=[
+      {
+        flightNo:'ghf1hg23',
+        city:'Orlando',
+        passengers:500
+
+      },
+      {
+        flightNo:'Qwe1876',
+        city:'Chiacgo',
+        passengers:300
+
+      },
+      {
+        flightNo:'Piuy211',
+        city:'Dallas',
+        passengers:200
+
+      }
+    ]
+
    }
 
     ngAfterViewInit(){
@@ -64,6 +92,11 @@ export class AppComponent implements OnInit,AfterViewInit{
   save(){
     console.log('You clicked the button');
     this.flag=!this.flag;
+  }
+
+  handleSelectedFlight($event){
+  console.log("TCL: AppComponent -> handleSelectedFlight -> $event", $event)
+    
   }
 }
 
