@@ -1,27 +1,27 @@
-<app-flights [flights]="flightsArr" (flightSelected)="handleSelectedFlight($event)"></app-flights>
+<!-- <app-list-flights [flights]="flightsArr" (flightSelected)="handleSelectedFlight($event)"></app-list-flights> -->
 <!-- String interpolation -->
-<P class="para">HELLO {{title}}</P>
+<!-- <P class="para">HELLO {{title}}</P>
 <p>{{4+5}}</p>
-<p>{{flag?'Show':'No Show'}}</p>
+<p>{{flag?'Show':'No Show'}}</p> -->
 
 
 <!-- Property binding -->
 <!-- class to view -->
-<input type="text" [value]="name">
+<!-- <input type="text" [value]="name">
 <br>
-<img [src]="image" alt="Bitcoin" class="img">
+<img [src]="image" alt="Bitcoin" class="img"> -->
 
 
 <!-- Event binding -->
 <!-- view/template/html to class-->
-<button (click)="save()">Hit me!</button>
+<!-- <button (click)="save()">Hit me!</button> -->
 
 
 <!-- template reference variable -->
 
-<p #content>Random content</p>
+<!-- <p #content>Random content</p>
 
-<p #cities>Chicago</p>
+<p #cities>Chicago</p> -->
 <!-- <ng-template #cities>
     <p #cities>New York</p>
 </ng-template>
@@ -32,7 +32,7 @@
 
 <!-- Structural directive---add/remove elements from the dom ngFor,ngIf-->
 
-<ul >
+<!-- <ul >
 <ng-container *ngFor="let item of empArr">     
 <li>{{item.name}}, {{item.age}}</li>
 </ng-container>
@@ -40,14 +40,14 @@
 
 <ng-container *ngIf="flag">
     <p>Show starts tommorrow</p>
-</ng-container>
+</ng-container> -->
 
 <!-- Attribute directive ---style an element ngclass -->
-
-<p [ngClass]="{content: flag}">This content's style depends on the flag</p>
+<!-- 
+<p [ngClass]="{content: flag}">This content's style depends on the flag</p> -->
 
 <!-- Pipes use for data transformation-->
-<h3>PIpes</h3>
+<!-- <h3>PIpes</h3>
 
 <ul >
    
@@ -56,7 +56,19 @@
     <li>{{item.name |uppercase}}, {{item.age}} , {{item.salary |currency }}, {{item.salary |calculateBonus}} , {{item.dateJoined | date:'mm/dd/yyyy'}}</li>
     
     </ng-container>
-</ul>
+</ul> -->
 
 <!-- smart componet(container) communicates with service/store,dumb(presentational) -->
 
+<!-- Router -->
+
+<nav>
+    <ul>
+        <li><a routerLink="/"> Home</a></li>
+        <li><a routerLink="/flights">Flights</a></li>
+        <li><a routerLink="/about">About Us</a></li>
+        <li><a routerLink="/signin">Sign In</a></li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>

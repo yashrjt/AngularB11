@@ -12,3 +12,24 @@
     background-color: olive;
     color:#ffffff;
 }
+
+nav{
+    background-color: maroon;
+   
+    height:50px;
+  
+}
+ul{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+li{
+    list-style: none;
+    
+}
+
+a{
+    color:#ffffff;
+}
