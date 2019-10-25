@@ -10,6 +10,8 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { FlightsModule } from './flights/flights.module';
 
+import {ReactiveFormsModule}  from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { FlightsModule } from './flights/flights.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FlightsModule
+    FlightsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
