@@ -24,8 +24,11 @@ export class AppComponent implements OnInit,AfterViewInit{
 
   @ViewChild('content',{static:false}) randomVar:ElementRef;
 
-  @ViewChildren('cities') city:QueryList<string>;
+  @ViewChildren('cities') city:QueryList<ElementRef>;
 
+  @ViewChildren('pname')
+  persons: QueryList<ElementRef>;
+  
   ngOnInit(){
     console.log('app comp initialized');
     this.sum=this.addNumbers(10,20);
@@ -80,8 +83,9 @@ export class AppComponent implements OnInit,AfterViewInit{
    }
 
     ngAfterViewInit(){
-      console.log('After view init',this.randomVar.nativeElement.innerHTML);
-      console.log(this.city);
+     // console.log('After view init',this.randomVar.nativeElement.innerHTML);
+    // this.city.forEach(el => console.log(el.nativeElement.innerHTML));
+   
     }
   
     addNumbers(a:number,b:number):number{
