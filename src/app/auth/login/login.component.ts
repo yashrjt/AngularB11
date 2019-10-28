@@ -24,7 +24,15 @@ export class LoginComponent implements OnInit {
 
 
   login(){
-    console.log(JSON.stringify(this.loginForm.value));
+   
+    if( !this.loginForm.valid ){
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+    else{
+      console.log(JSON.stringify(this.loginForm.value));
+    }
+     
     this.loginForm.reset();
   }
 
