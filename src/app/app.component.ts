@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
 
 import {Employee}  from './Employee';
+import { LoginService } from './auth/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,10 @@ export class AppComponent implements OnInit,AfterViewInit{
   image:string;
   name:string;
   flightsArr:Array<any>;
-  constructor(){
+
+  signedIn:boolean;
+
+  constructor(private loginservice:LoginService,private router:Router){
     
   }
 
@@ -30,6 +35,11 @@ export class AppComponent implements OnInit,AfterViewInit{
   persons: QueryList<ElementRef>;
   
   ngOnInit(){
+    this.loginservice.userLoginObservable.subscribe((value)=>{
+    console.log("TCL: AppComponent -> ngOnInit -> value", value)
+        this.signedIn=value;
+    })
+
     console.log('app comp initialized');
     this.sum=this.addNumbers(10,20);
     console.log("TCL: AppComponent -> constructor ->  this.sum",  this.sum)
@@ -101,6 +111,11 @@ export class AppComponent implements OnInit,AfterViewInit{
   handleSelectedFlight($event){
   console.log("TCL: AppComponent -> handleSelectedFlight -> $event", $event)
     
+  }
+
+  signout(){
+    this.loginservice.userLogin.next(false);
+    this.router.navigate(['/signin']);
   }
 }
 

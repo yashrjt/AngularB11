@@ -7,6 +7,7 @@ import {FlightComponent} from './flights/flight/flight.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
+  
   // {path:'flights',component:FlightComponent},
    {path:'about',component:AboutComponent},
    {path:'flights',loadChildren:'./flights/flights.module#FlightsModule'},
