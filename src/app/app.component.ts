@@ -33,8 +33,13 @@ export class AppComponent implements OnInit,AfterViewInit{
 
   @ViewChildren('pname')
   persons: QueryList<ElementRef>;
-  
+
+
   ngOnInit(){
+
+    if(!!localStorage.getItem('token')){
+     this.loginservice.userLogin.next(true);
+    }
     this.loginservice.userLoginObservable.subscribe((value)=>{
     console.log("TCL: AppComponent -> ngOnInit -> value", value)
         this.signedIn=value;
@@ -114,8 +119,7 @@ export class AppComponent implements OnInit,AfterViewInit{
   }
 
   signout(){
-    this.loginservice.userLogin.next(false);
-    this.router.navigate(['/signin']);
+    this.loginservice.logout();
   }
 }
 

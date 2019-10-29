@@ -32,7 +32,9 @@ export class LoginComponent implements OnInit {
     }
     else{
       
-      this.loginservice.login(JSON.stringify(this.loginForm.value));
+      this.loginservice.login(JSON.stringify(this.loginForm.value)).subscribe(val=>{
+      console.log("TCL: LoginComponent -> login -> val", val)
+        });
     }
      
     this.loginForm.reset();
