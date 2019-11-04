@@ -11,6 +11,7 @@ import { map, catchError } from 'rxjs/operators';
 
 export class CreateService {
 
+  //CRUD operation
   //http calls fron frontend
 
   loginSucess:boolean=true;
@@ -18,7 +19,7 @@ export class CreateService {
   userLogin:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(false);
   userLoginObservable= this.userLogin.asObservable();
 
-
+    flightsArray:Array<any>;
   constructor(private router:Router,private http:HttpClient) { }
   headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -48,7 +49,7 @@ export class CreateService {
     return this.http.get('http://localhost:3000/api/flights/getAllFlights').pipe(
         map(res=>{
           if(res){
-            //this.router.navigate(['manage']);
+           this.flightsArray=JSON.parse(JSON.stringify(res));
           }
             return res;
         }),

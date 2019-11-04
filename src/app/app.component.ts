@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ViewChildren, QueryList, OnDestroy } from '@angular/core';
 
 import {Employee}  from './Employee';
 import { LoginService } from './auth/services/login.service';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit,AfterViewInit{
+export class AppComponent implements OnInit,AfterViewInit,OnDestroy{
 
   sum:number;
   title:string = null;
@@ -33,14 +33,14 @@ export class AppComponent implements OnInit,AfterViewInit{
 
   @ViewChildren('pname')
   persons: QueryList<ElementRef>;
-
+  loginSubscription;
 
   ngOnInit(){
 
     if(!!localStorage.getItem('token')){
      this.loginservice.userLogin.next(true);
     }
-    this.loginservice.userLoginObservable.subscribe((value)=>{
+    this.loginSubscription=this.loginservice.userLoginObservable.subscribe((value)=>{
     console.log("TCL: AppComponent -> ngOnInit -> value", value)
         this.signedIn=value;
     })
@@ -120,6 +120,10 @@ export class AppComponent implements OnInit,AfterViewInit{
 
   signout(){
     this.loginservice.logout();
+  }
+
+  ngOnDestroy(){
+    this.loginSubscription.unsubscribe();
   }
 }
 
