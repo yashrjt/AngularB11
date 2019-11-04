@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {CreateService} from '../services/create.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-flights',
@@ -13,7 +14,7 @@ export class UpdateFlightsComponent implements OnInit {
   flyArr: Array<Object>=[];
 
 
-  constructor( private fb:FormBuilder, private getData: CreateService, private flights:CreateService ) { }
+  constructor( private fb:FormBuilder, private getData: CreateService, private flights:CreateService,private router:Router ) { }
 
   ngOnInit() {
     this.getFlightList();
@@ -42,17 +43,23 @@ export class UpdateFlightsComponent implements OnInit {
   //   })
   // }
 
-  update(){
-    if( !this.updateForm.valid ){
-      this.updateForm.markAllAsTouched();
-      return;
-    }
-    else{
-      var code = this.updateForm.get('code').value;
-      this.updateForm.removeControl('code');
-      this.getData.updateFlight( code, JSON.stringify(this.updateForm.value));
-    }
+  // update(){
+  //   if( !this.updateForm.valid ){
+  //     this.updateForm.markAllAsTouched();
+  //     return;
+  //   }
+  //   else{
+  //     var code = this.updateForm.get('code').value;
+  //     this.updateForm.removeControl('code');
+  //     this.getData.updateFlight( code, JSON.stringify(this.updateForm.value));
+  //   }
     
+  // }
+
+  update(aircode){
+    const url='manage/update-flight/:'+aircode
+    console.log("TCL: UpdateFlightsComponent -> update -> url", url)
+   this.router.navigate([url]);
   }
 
 }

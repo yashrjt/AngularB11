@@ -11,7 +11,7 @@
     <tbody>
         <ng-container *ngFor="let item of flyArr">     
         <tr>
-            <td><button class="btn btn-small btn-success" (click)="submit(item.code)">Update</button></td>
+            <td><button class="btn btn-small btn-success" (click)="update(item.code)">Update</button></td>
             <td>{{item.name}}</td>
             <td>{{item.origin}}</td>
             <td>{{item.destination}}</td>
