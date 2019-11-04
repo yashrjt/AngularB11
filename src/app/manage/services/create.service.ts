@@ -50,6 +50,9 @@ export class CreateService {
         map(res=>{
           if(res){
            this.flightsArray=JSON.parse(JSON.stringify(res));
+           for(let entry of this.flightsArray){
+            console.log(entry);
+          }
           }
             return res;
         }),
@@ -58,7 +61,27 @@ export class CreateService {
             return throwError(err);
         })
     )
-}
+  }
+
+  getFlight(flightid){
+
+    return this.http.get('http://localhost:3000/api/flights/getAllFlights').pipe(
+        map(res=>{
+          if(res){
+           this.flightsArray=JSON.parse(JSON.stringify(res));
+           for(let entry of this.flightsArray){
+             if(entry['code']==flightid){
+               return entry;
+             }
+           }
+          }
+        }),
+        catchError((err) => 
+        {
+            return throwError(err);
+        })
+    )
+  }
 
 deleteFlight(deleteCom:string){
     var url = "http://localhost:3000/api/flights/deleteFlight/"+deleteCom;
