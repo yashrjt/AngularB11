@@ -12,7 +12,8 @@ import { FlightsModule } from './flights/flights.module';
 
 import {ReactiveFormsModule}  from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule ,HTTP_INTERCEPTORS} from '@angular/common/http';
+import { AuthInterceptorService } from './auth/Interceptor/auth-interceptor.service';
 // import { CreateFlightsComponent } from './manage/create-flights/create-flights.component';
 // import { DeleteFlightsComponent } from './manage/delete-flights/delete-flights.component';
 // import { UpdateFlightsComponent } from './manage/update-flights/update-flights.component';
@@ -37,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AuthModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
