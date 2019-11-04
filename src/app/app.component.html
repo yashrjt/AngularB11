@@ -67,6 +67,9 @@
         <li><a routerLink="/flights">Flights</a></li>
         <li><a routerLink="/about">About Us</a></li>
         <ng-container *ngIf="signedIn">
+            <li><a routerLink = "/manage">Manage</a></li>
+        </ng-container>
+        <ng-container *ngIf="signedIn">
             <li><p (click)="signout()">Sign Out</p></li>
         </ng-container>
         <ng-container *ngIf="!signedIn">

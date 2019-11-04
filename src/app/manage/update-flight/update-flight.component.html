@@ -1,0 +1,19 @@
+<form (ngSubmit)="update()" [formGroup]="updateForm">
+    <div class="form-group">
+        <label for="Ccode">AirCode</label>
+        <input type="text" class="form-control" id="Ccode" formControlName="code" placeholder="Airline-Code" required="required">
+    </div>
+    <div class="form-group">
+        <label for="Nname">Airline Name</label>
+        <input type="text" class="form-control" id="Nname" formControlName="name" placeholder="Airline Name" required="required">
+    </div>
+    <div class="form-group">
+        <label for="Oorigin">Origin</label>
+        <input type="text" class="form-control" id="Oorigin" formControlName="origin" placeholder="from" required="required">
+    </div>
+    <div class="form-group">
+        <label for="Ddestination">Destination</label>
+        <input type="text" class="form-control" id="Ddestination" formControlName="destination" placeholder="to" required="required">
+    </div>
+    <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
